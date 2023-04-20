@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We' crossorigin='anonymous'>
+    <script src='https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js' integrity='sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj' crossorigin='anonymous'></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Patients Dashboard</title>
+</head>
+<body>
+    <div class="bannerDasboard d-flex justify-content-center align-items-center" style="background-image:url('../static/medipicc.jpg');">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-6">
+              <h1 class="titleDashboard"><span class="titleDashboard-white">Medi</span><span class="titleDashboard-red">Serve</span></h1>
+            </div>
+            <div class="col-sm-6 text-right">
+              <h3 class="p-0 col-4 offset-sm-8 text-white">Admin: {{user.first_name}}</h3>
+              <a href="/user/logout" class="btn btn-outline-danger offset-sm-9 col-3 col-sm-2 mt-3">Logout</a>   
+            </div>
+          </div>
+        </div>
+    </div>
+      
+      <div class="container-fluid mx-auto mt-2 my-3 border">
+        <div class="d-flex justify-content-between">
+        </div>
+        <div class="row">
+          <div class="d-flex justify-content-between">
+            <h6 class="mb-0">Patient List</h6>
+          </div>
+          <div class="row justify-content-between mt-5 shadow border-dark">
+            <div class="table-responsive">
+              <table class="table table-gray table-striped table-hover table-sm fs-4 text-center shadow border-dark">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Gender</th>
+                    <th>Symptoms</th>
+                    <th>Added By</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for patient in patients %}
+                    <tr>
+                      <td>{{patient.patient_name}}</td>
+                      <td>{{patient.gender}}</td>
+                      <td>{{patient.sympthoms}}</td>
+                      <td>{{patient.creator.first_name}}</td>
+                      <td>
+                        <a href="/edit/{{patient.id}}" class="btn btn-secondary">Edit</a>
+                        <a href="/show/{{patient.id}}" class="">Details</a>
+                        <a href="/patients/destroy/{{patient.id}}" class="btn btn-danger">Delete</a>
+                      </td>
+                    </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <a href="/new/patient" class="btn btn-danger offset-sm-9 col-12 col-sm-2 mb-3">Register a new Patient</a>
+      
+      <footer>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6 text-center">
+              <p>Copyright © 2023</p>
+            </div>
+            
+          </div>
+        </div>
+      </footer>
+
+
+</body>
+</html>

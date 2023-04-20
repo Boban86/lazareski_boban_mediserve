@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css' rel='stylesheet'
+        integrity='sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We' crossorigin='anonymous'>
+
+    <script src='https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js'
+        integrity='sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj'
+        crossorigin='anonymous'></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Patient View</title>
+</head>
+
+<body>
+    <div class="bannerDasboard d-flex justify-content-center align-items-center"
+    style="background-image:url('../static/medipicc.jpg');">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <h1 class="titleDashboard"><span class="titleDashboard-white">Medi</span><span
+                        class="titleDashboard-red">Serve</span></h1>
+            </div>
+            <div class="col-sm-6 text-right">
+                <h3 class="p-0 col-4 offset-sm-8 text-white">Admin: {{user.first_name}}</h3>
+                <div class="col-sm-6 d-flex align-items-right ">
+                    <a href="/user/logout" class="btn btn-outline-danger mr-2" style="margin-right: 50px;">Logout</a>
+                    <a href="/dashboard" class="btn btn-outline-light me-2" style="height: 95%;">Dashboard</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+    <div class="container row justify-content-center mx-auto mt-2">
+
+
+        <div class="row justify-content-between mt-5">
+            <h3 class=''>{{patient.name}} Registered by: Admin- {{patient.creator.first_name}}</h3>
+        </div>
+
+        <div class="row border border-dark border-2 rounded rounded-2 shadow p-1 fs-5">
+            <div class="row mb-3">
+                <p class="col-4">Patient Name:</p>
+                <p class="col-8">{{patient.patient_name}}</p>
+            </div>
+            <div class="row mb-3">
+                <p class="col-4">Gender:</p>
+                <p class="col-8">{{patient.gender}}</p>
+            </div>
+            <div class="row mb-3">
+                <p class="col-4">DOB:</p>
+                <p class="col-8">{{patient.date.strftime('%B %dth, %Y')}}</p>
+            </div>
+            <div class="row mb-3">
+                <p class="col-4">Symptoms:</p>
+                <p class="col-8">{{patient.sympthoms}}</p>
+            </div>
+            <div class="row mb-3">
+                <p class="col-4">Address:</p>
+                <p class="col-8">{{patient.address}}</p>
+            </div>
+            <div class="row mb-3">
+                <p class="col-4">Contact:</p>
+                <p class="col-8">{{patient.contact}}</p>
+            </div>
+            <div class="row mb-3">
+                <p class="col-4">Email:</p>
+                <p class="col-8">{{patient.email}}</p>
+            </div>
+            <div class="row mb-3">
+                <p class="col-4">Insurance Information:</p>
+                <p class="col-8">{{patient.Insurance_Info}}</p>
+            </div>
+        </div>
+
+    </div>
+    <footer>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6 text-center">
+              <p>Copyright © 2023</p>
+            </div>
+           
+          </div>
+        </div>
+      </footer>
+      
+</body>
+
+</html>
